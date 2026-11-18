@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MiniYACC Tool</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header><div class="brand">Mini<span>YACC</span></div>
+<nav><a href="#home">Home</a><a href="#grammar">Grammar</a><a href="#results">Results</a></nav>
+<div id="status" class="status off">checking server…</div></header>
+<main>
+<section id="home" class="hero"><h1>Grammar in. Parser out.</h1>
+<p>An SLR(1) parser generator and grammar analyzer. Enter a context-free grammar to see FIRST and FOLLOW sets, LR(0) item sets, the SLR parsing table, and parse any string step by step.</p>
+<div class="feats"><div><b>01</b>FIRST &amp; FOLLOW</div><div><b>02</b>LR(0) states</div><div><b>03</b>SLR table</div><div><b>04</b>Shift-reduce parse</div></div></section>
+<section id="grammar" class="panel"><h2>Grammar Configuration</h2>
+<label>Production rules <small>(one per line, <code>eps</code> = epsilon, separate symbols with spaces)</small></label>
+<textarea id="rules" rows="7">E -> E + T | T
+T -> T * F | F
+F -> ( E ) | id</textarea>
+<div class="row"><div><label>Start symbol</label><input id="start" value="E"></div><div><label>Input string</label><input id="input" value="id + id * id"></div></div>
+<div class="btns"><button id="bAnalyze">Generate Analysis</button><button id="bParse" class="alt">Parse Input</button><button id="bGen" class="alt">Generate Parser (Java)</button></div>
+<p id="msg"></p></section>
+<section id="results"><h2>Results</h2>
+<div class="grid2"><div class="panel"><h3>FIRST &amp; FOLLOW Sets</h3><div id="ff" class="out">Run an analysis to see results.</div></div>
+<div class="panel"><h3>LR(0) Item Sets</h3><div id="states" class="out">…</div></div></div>
+<div class="panel"><h3>SLR Parsing Table <span id="conf" class="flag"></span></h3><div id="table" class="out scroll">…</div></div>
+<div class="panel"><h3>Parsing Result</h3><div id="trace" class="out scroll">…</div></div>
+<div class="panel" id="genp" hidden><h3>Generated parser source</h3><p id="genf"></p><pre id="gensrc"></pre></div>
+</section></main>
+<footer>MiniYACC Tool · Compiler Design mini-project · Java 17</footer>
+<script src="app.js"></script></body></html>
